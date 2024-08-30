@@ -1,14 +1,18 @@
 # Scenario
 
-This Project is the frontend of an interview coding challenge. There are three major steps involved with this challenge:
+This Project is the frontend of an interview coding challenge. We have provided these starter files to demonstrate the problem and to serve as a starting point. You are not required to use these files if you are more comfortable starting your own project or working in a different framework, but the final product must meet the three objectives listed for this project. The objectives are as follows
 
-## Step 1: Connect all frontend components to the central Task Service task list data
+## Step 1: All frontend components must share data
 
-Currently, our app has three functional components that all work with some variation of task data, but they are not sharing that data between components. Your first step is to connect each of the three components in question (TaskDisplay, TaskCreate, and TaskDelete) to the TaskService data so that each component's behavior affects the data of the other datasets.
+In our starter project, all the fronend components are using discrete data. Your first objective is to ensure that all components are charing the same data.
 
-## Step 2: Connect the TaskService methods with data managed by the backend half of this project
+## Step 2: Frontend data must connect to the backend database
 
-Once you have connected our components the TaskService, your next objective is to connect the TaskService to the backend half of the project (setup <a href="https://github.com/roesnera/Interview_Challenge_Backend">here</a>). The backend is already set up with a basic node/express server with routes for GET, POST, and DELETE. Your final objective can be found on the backend
+Once all your frontend components are sharing data, your next objective is to communicate that data with the backend.
+
+## Step 3: Backend data must persist in a database
+
+The final objective is the ensure that data stored and managed by the backend is persisted to a database such that the backend can be stopped and restarted and the data will remain the same.
 
 ## After all steps complete
 
