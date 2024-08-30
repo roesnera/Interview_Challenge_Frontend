@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../../task-types';
+import { Observable, of } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-display',
   standalone: true,
-  imports: [],
-  providers: [TaskService],
+  imports: [AsyncPipe],
   templateUrl: './task-display.component.html',
   styleUrl: './task-display.component.css'
 })
 export class TaskDisplayComponent {
   /**
    * In this component, we want to display tasks retrieved from the backend
-   * As part of step 1, you will need to change the tasks property to store an Observable of an array of Tasks
-   * and then initialize that observable using the TaskService
    */
+  protected tasks$: Observable<Array<Task>>;
 
-  protected tasks: Array<Task> = [
-      {
+
+  constructor(private taskService: TaskService) {
+    /**
+      * You'll need to initialize the tasks$ property using the task service's data
+      */
+    this.tasks$ = of([{
         name: 'Example task 1',
         due: new Date(Date.now() + 3600),
         description: 'An example task defined in the Task Display Component',
         complete: false
-      }
-    ]
-
-  constructor(private taskService: TaskService) { }
+      }])
+  }
 }

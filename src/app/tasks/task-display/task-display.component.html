@@ -1,15 +1,12 @@
 <div>
   <h2>Task Display Component</h2>
-  <!-- Once you have updated the type of the tasks property,
-    you will need to update the for loop to use the async pipe as below
-    @for (task of tasks | async; track $index) {-->
-  @for (task of tasks; track $index) {
+  @for (task of tasks$ | async; track $index) {
   <div>
     <h3>{{ task.name }}</h3>
     <p>Due Date: <strong>{{ task.due }}</strong></p>
     <p>Description: <strong>{{ task.description }}</strong></p>
     <p>Complete: <strong>{{ task.complete }}</strong></p>
   </div>
-  <br/>
+  <br />
   }
 </div>

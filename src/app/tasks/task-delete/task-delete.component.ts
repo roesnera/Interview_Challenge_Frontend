@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-task-delete',
   standalone: true,
   imports: [FormsModule],
-  providers: [TaskService],
   templateUrl: './task-delete.component.html',
   styleUrl: './task-delete.component.css'
 })
@@ -24,12 +23,5 @@ export class TaskDeleteComponent {
      * Use the delete method of the task service to delete the selected task from the tasks array
      */
     this.taskId = null
-  }
-
-  protected isValid(): boolean {
-    /**
-     * Should return true if the task id entered is a valid index of the tasks array in the task service
-     */
-    return false
   }
 }
