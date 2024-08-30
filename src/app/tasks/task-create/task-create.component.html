@@ -1,1 +1,20 @@
-<p>task-create works!</p>
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="task.name" required>
+      </div>
+      <div>
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" name="dueDate" [(ngModel)]="task.due" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" [(ngModel)]="task.description" required minlength="6">
+      </div>
+      <div>
+        <label for="complete">Complete:</label>
+        <input type="checkbox" id="complete" name="complete" [(ngModel)]="task.complete">
+      </div>
+      <button type="submit" [disabled]="!taskForm.form.valid">Register</button>
+</form>
+<br/>

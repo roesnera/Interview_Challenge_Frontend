@@ -1,27 +1,15 @@
 # Scenario
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
+This Project is the frontend of an interview coding challenge. There are three major steps involved with this challenge:
 
-## Development server
+## Step 1: Connect all frontend components to the central Task Service task list data
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Currently, our app has three functional components that all work with some variation of task data, but they are not sharing that data between components. Your first step is to connect each of the three components in question (TaskDisplay, TaskCreate, and TaskDelete) to the TaskService data so that each component's behavior affects the data of the other datasets.
 
-## Code scaffolding
+## Step 2: Connect the TaskService methods with data managed by the backend half of this project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Once you have connected our components the TaskService, your next objective is to connect the TaskService to the backend half of the project (setup <a href="https://github.com/roesnera/Interview_Challenge_Backend">here</a>). The backend is already set up with a basic node/express server with routes for GET, POST, and DELETE. Your final objective can be found on the backend
 
-## Build
+## After all steps complete
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Once you have completed all the steps in both components, take about 15 minutes to jot down some thoughts on how you would improve the approach of this project moving forward. Concrete, actionable ideas strongly preferred!
