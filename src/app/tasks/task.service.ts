@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../task-types';
+import { Task, TaskAndId } from '../task-types';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,23 +7,33 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskService {
-  private tasksSubject = new BehaviorSubject<Array<Task>>([]);
+  private apiUrl = 'http://localhost:5200/api/tasks'
+  private tasksSubject = new BehaviorSubject<Array<TaskAndId>>([]);
   tasks$ = this.tasksSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Array<Task>> {
-    return this.tasks$;
+  getTasks(): Observable<Array<TaskAndId>> {
+    this.refreshTasks()
+    return this.tasks$
   }
+
+  refreshTasks() {
+    console.log('refreshing tasks')
+    this.http.get<Array<TaskAndId>>(this.apiUrl).subscribe(
+      tasks => this.tasksSubject.next(tasks));
+  }
+
+  /* This is the only function that you'll need to change in this service */
+  updateTask(id: string): void { }
 
   createTask(newTask: Task): void {
-    const currentTasks = this.tasksSubject.getValue();
-    this.tasksSubject.next([...currentTasks, newTask]);
+    this.http.post(this.apiUrl, { task: newTask }).subscribe(console.log)
+    this.refreshTasks()
   }
 
-  deleteTask(index: number): void {
-    const currentTasks = this.tasksSubject.getValue();
-    currentTasks.splice(index, 1);
-    this.tasksSubject.next([...currentTasks]);
+  deleteTask(index: string): void {
+    this.http.delete(`${this.apiUrl}/${index}`).subscribe(console.log)
+    this.refreshTasks()
   }
 }

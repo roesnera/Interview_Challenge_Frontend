@@ -1,7 +1,8 @@
+// No need to change this file
 import { Component } from '@angular/core';
 import { TaskService } from '../task.service';
-import { Task } from '../../task-types';
-import { Observable, of } from 'rxjs';
+import { TaskAndId } from '../../task-types';
+import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -9,24 +10,19 @@ import { AsyncPipe } from '@angular/common';
   standalone: true,
   imports: [AsyncPipe],
   templateUrl: './task-display.component.html',
-  styleUrl: './task-display.component.css'
 })
 export class TaskDisplayComponent {
   /**
    * In this component, we want to display tasks retrieved from the backend
    */
-  protected tasks$: Observable<Array<Task>>;
+  protected tasks$: Observable<Array<TaskAndId>>;
 
 
   constructor(private taskService: TaskService) {
     /**
-      * You'll need to initialize the tasks$ property using the task service's data
+      * You'll need to update the tasks$ property using the task service's data
+      * the below is just an default initialization
       */
-    this.tasks$ = of([{
-        name: 'Example task 1',
-        due: new Date(Date.now() + 3600),
-        description: 'An example task defined in the Task Display Component',
-        complete: false
-      }])
+    this.tasks$ = this.taskService.getTasks()
   }
 }

@@ -1,3 +1,4 @@
+<!-- You do not need to change this file -->
 <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
       <div>
         <label for="name">Name:</label>
@@ -9,7 +10,7 @@
       </div>
       <div>
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" [(ngModel)]="task.description" required minlength="6">
+        <input type="text" id="description" name="description" [(ngModel)]="task.description" required>
       </div>
       <div>
         <label for="complete">Complete:</label>
