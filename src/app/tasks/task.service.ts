@@ -19,21 +19,29 @@ export class TaskService {
   }
 
   refreshTasks() {
-    console.log('refreshing tasks')
     this.http.get<Array<TaskAndId>>(this.apiUrl).subscribe(
       tasks => this.tasksSubject.next(tasks));
   }
 
-  /* This is the only function that you'll need to change in this service */
-  updateTask(id: string): void { }
+  /*
+   * This is the only function that you'll need to change in this service.
+   * It should update an already existing task entry with new information entered by the user
+   */
+  updateTask(id: string, task: Task): void { }
 
   createTask(newTask: Task): void {
-    this.http.post(this.apiUrl, { task: newTask }).subscribe(console.log)
-    this.refreshTasks()
+    this.http.post(this.apiUrl, { task: newTask }).subscribe({
+      next: () => {
+        this.refreshTasks()
+      }
+    })
   }
 
   deleteTask(index: string): void {
-    this.http.delete(`${this.apiUrl}/${index}`).subscribe(console.log)
-    this.refreshTasks()
+    this.http.delete(`${this.apiUrl}/${index}`).subscribe({
+      next: () => {
+        this.refreshTasks()
+      }
+    })
   }
 }

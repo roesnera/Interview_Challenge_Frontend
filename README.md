@@ -16,7 +16,7 @@ The backend must persist its data in a database.
 
 ## Challenge:
 
-Your challenge is to implement a new feature in this application to update a task. The user must be able to change any field in the task, and when they submit the changes they should see those changes reflected in the task display UI, as well as updates to the backend data.
+We have provided the initial structure for a TODO list. Most components have been pre-wired for you. We expect you to finish writing the task-update component and the updateTask function inside task.service.ts
 
 ## After all steps complete
 

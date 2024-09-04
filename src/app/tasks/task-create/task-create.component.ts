@@ -21,9 +21,6 @@ export class TaskCreateComponent {
   constructor(private taskService: TaskService) { }
 
   protected onSubmit(): void {
-    /**
-      * Here you will need to use the Task Service method to update the tasks observable
-      */
     this.taskService.createTask(this.task)
     this.task = {
       name: '',

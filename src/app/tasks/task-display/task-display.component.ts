@@ -12,17 +12,10 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './task-display.component.html',
 })
 export class TaskDisplayComponent {
-  /**
-   * In this component, we want to display tasks retrieved from the backend
-   */
   protected tasks$: Observable<Array<TaskAndId>>;
 
 
   constructor(private taskService: TaskService) {
-    /**
-      * You'll need to update the tasks$ property using the task service's data
-      * the below is just an default initialization
-      */
     this.tasks$ = this.taskService.getTasks()
   }
 }
