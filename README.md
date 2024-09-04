@@ -8,4 +8,5 @@ We have provided the initial structure for a TODO list. Most components have bee
 <ol>
   <li>finish writing the task-update component</li>
   <li>implement the updateTask function inside task.service.ts</li>
+  <li>implement a put route on the backend in the app.ts file</li>
 </ol> 
